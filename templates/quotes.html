@@ -3,13 +3,13 @@
         <title>Quotations.Space</title>
     </head>
     <body>
+            <hr/>
         {% for quote in quotations %}
-            <p>{{quote.quotations_text}}</p>
-            <p>{{quote.person}}</p>
-            <p>{{quote.source}}</p>
-            <p>{{quote.category}}</p>
-            <p>{{quote.date_said}}</p>
-            <p>{{quote.star_rating}}</p>
+            <p>"{{quote.quotation_text}}"</p>
+            <p> -- {{quote.person}}, <i>{{quote.source}}</i></p>
+            <p>Category: {{quote.category}}</p>
+            <p>Date: {{quote.date_said}}</p>
+            <p>Rating: {{quote.stars_rating}} stars</p>
             <hr/>
         {% endfor %}
     </body>
