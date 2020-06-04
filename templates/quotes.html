@@ -1,0 +1,16 @@
+<html>
+    <head>
+ 
+    </head>
+    <body>
+        {% for quote in quotations %}
+            <p>{{quote.quotations_text}}<p>
+            <p>{{quote.person}}<p>
+            <p>{{quote.source}}<p>
+            <p>{{quote.category}}<p>
+            <p>{{quote.date_said}}<p>
+            <p>{{quote.star_rating}}<p>
+            <hr/>
+        {% endfor %}
+    </body>
+</html>
