@@ -1,16 +1,12 @@
-<html>
-    <head>
-        <title>Quotations.Space</title>
-    </head>
-    <body>
-            <hr/>
-        {% for quote in quotations %}
-            <p>"{{quote.quotation_text}}"</p>
-            <p> -- {{quote.person}}, <i>{{quote.source}}</i></p>
-            <p>Category: {{quote.category}}</p>
-            <p>Date: {{quote.date_said}}</p>
-            <p>Rating: {{quote.stars_rating}} stars</p>
-            <hr/>
-        {% endfor %}
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <hr/>
+    {% for quote in quotations %}
+        <h1>"{{quote.quotation_text}}"</h1>
+        <h3> -- {{quote.person}}, <i>{{quote.source}}</i></h3>
+        <h5>Category: {{quote.category}}</h5>
+        <p>Date: {{quote.date_said}}</p>
+        <p>Rating: {{quote.stars_rating}} stars</p>
+        <hr/>
+    {% endfor %}
+{% endblock %}
