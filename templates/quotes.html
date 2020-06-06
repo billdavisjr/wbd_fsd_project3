@@ -2,8 +2,8 @@
 {% block content %}
     <hr/>
     {% for quote in quotations %}
-        <h1>"{{quote.quotation_text}}"</h1>
-        <h3> -- {{quote.person}}, <i>{{quote.source}}</i></h3>
+        <h3>&ldquo;{{quote.quotation_text}}&rdquo;</h3>
+        <h4 style="text-align: right; "> -- {{quote.person}}, <i>{{quote.source}}</i></h4>
         <h5>Category: {{quote.category}}</h5>
         <p>Date: {{quote.date_said}}</p>
         <p>Rating: {{quote.stars_rating}} stars</p>
