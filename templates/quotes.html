@@ -1,27 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <hr/>
-    {% for quote in quotations %}
-        <h3>&ldquo;{{quote.quotation_text}}&rdquo;</h3>
-        <h4 style="text-align: right; "> -- {{quote.person}}, <i>{{quote.source}}</i></h4>
-        <h5>Category: {{quote.category}}</h5>
-        <p>Date: {{quote.date_said}}</p>
-        <p>Rating: {{quote.stars_rating}} stars</p>
-        <hr/>
-    {% endfor %}
-
-    <ul class="collapsible" data-collapsible="accordion">
+     <ul class="collapsible" data-collapsible="accordion">
+        {% for quote in quotations %}
         <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            <h5><strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong></h5>
+            <div class="collapsible-header"><i class="material-icons">expand_more</i>-- {{quote.person}}, <em>{{quote.source}}</em></div>
+            <div class="collapsible-body">
+                <p>Category: {{quote.category}}</p>
+                <p>Date: {{quote.date_said}}</p>
+                <p>Rating: {{quote.stars_rating}} stars</p>
+            </div>
         </li>
-        <li>
-            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
+        {% endfor %}
     </ul>
 {% endblock %}
