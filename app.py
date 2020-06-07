@@ -16,6 +16,11 @@ def get_tasks():
     return render_template("quotes.html", quotations=mongo.db.quotations.find())
 
 
+@app.route('/add_quote')
+def add_quote():
+    return render_template('addquote.html')
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
