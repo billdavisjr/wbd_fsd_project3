@@ -3,15 +3,33 @@
 <div class="row">
     <form  action="" method="POST" class="col s12">
         <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix">First Name</label>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">assignment</i>
+                <textarea id="quote_text" name="quote_text" class="materialize-textarea"></textarea>
+                <label for="icon_prefix">Quote Text</label>
             </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">phone</i>
-                <input id="icon_telephone" type="tel" class="validate">
-                <label for="icon_telephone">Telephone</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">subject</i>
+                <input name="person" id="person" type="text">
+                <label for="icon_telephone">Person</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">today</i>
+                <input id="date_said" name="date_said" type="text" class="datepicker">
+                <label for="icon_prefix">Date Said</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="switch">
+                <label>
+                  <input id="is_favorite" name="is_favorite" type="checkbox">
+                  <span class="lever"></span>
+                  Favorite
+                </label>
             </div>
         </div>
     </form>
