@@ -4,6 +4,18 @@
     <form  action="" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
+                <i class="material-icons prefix">poll</i>
+                <select id="category" name="category_name">
+                    <option value="" disabled selected>Choose Category</option>
+                    {% for cat in categories %}
+                        <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                    {% endfor %}
+                </select>
+                <label>Quote Category</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <textarea id="quote_text" name="quote_text" class="materialize-textarea"></textarea>
                 <label for="icon_prefix">Quote Text</label>
@@ -19,7 +31,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">today</i>
-                <input id="date_said" name="date_said" type="text" class="datepicker">
+                <!-- input id="date_said" name="date_said" type="text" class="datepicker" -->
+                <input id="matfix" name="date_said" type="text" class="datepicker">
                 <label for="icon_prefix">Date Said</label>
             </div>
         </div>

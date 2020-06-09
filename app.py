@@ -13,12 +13,14 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_quotes')
 def get_tasks():
-    return render_template("quotes.html", quotations=mongo.db.quotations.find())
+    return render_template("quotes.html", 
+            quotations=mongo.db.quotations.find())
 
 
 @app.route('/add_quote')
 def add_quote():
-    return render_template('addquote.html')
+    return render_template('addquote.html',
+        categories=mongo.db.categories.find() )
 
 
 if __name__ == '__main__':
