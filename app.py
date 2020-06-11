@@ -12,15 +12,22 @@ mongo = PyMongo(app)
 
 @app.route('/')
 @app.route('/get_quotes')
-def get_tasks():
+def get_quotes():
     return render_template("quotes.html", 
-            quotations=mongo.db.quotations.find())
+                            quotations=mongo.db.quotations.find())
 
 
 @app.route('/add_quote')
 def add_quote():
     return render_template('addquote.html',
-        categories=mongo.db.categories.find() )
+                            categories=mongo.db.categories.find())
+
+
+@app.route('/insert_quote', methods=['POST'])
+def insert_quote():
+    quotes = mongo.db.quotations
+    quotes.insert_one(request.form.to_dict())
+    return redirect(url_for('get_quotes'))
 
 
 if __name__ == '__main__':
