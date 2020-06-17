@@ -1,8 +1,31 @@
 body {
-    background-color: rgb(157, 206, 168);
+    background-color: beige;
 }
 
 h3 {
     font-family: cursive;
     text-align: center;
+    background-color: goldenrod;
+}
+
+
+.btn_small {
+    height: 24px;
+    width: 60px;
+    line-height: 24px;
+    margin: 5px 5px;
+    padding: 0 0.5em;
+}
+
+.collapsible-body {
+    background-color: white;
+}
+
+.quotation {
+    background-color: bisque;
+    font-size: 1.5em;
+}
+
+.attribution {
+
 }
