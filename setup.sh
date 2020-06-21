@@ -7,3 +7,6 @@ pip3 install dnspython
 
 
 pip3 freeze > requirements.txt
+
+heroku git:remote quotations-space
+
