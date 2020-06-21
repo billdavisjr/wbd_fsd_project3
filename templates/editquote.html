@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<h5 class="center">Add Quote</h5>
+<h5 class="center">Edit Quote</h5>
 <div class="row">
-    <form action="{{ url_for('insert_quote') }}"  method="POST" class="col s12">
+    <form action="{{ url_for('edit_quote', quote_id=quote._id) }}" method="POST"  class="col s12">        
         <div class="row">
             <div class="row">
                 <div class="input-field col s12">
@@ -47,9 +47,10 @@
                 </label>
                 Favorite
             </div>
+        </div>
         <div class="row">
-            <button class="btn waves-effect waves-light right" type="submit" name="action">Add Quote
-                <i class="material-icons right">playlist_add</i>
+            <button class="btn waves-effect waves-light right" type="submit" name="action">Save Quote
+                <i class="material-icons right">save_alt</i>
              </button>
         </div>
     </form>
