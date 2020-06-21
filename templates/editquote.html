@@ -9,8 +9,12 @@
                     <select id="category_name" name="category_name">
                         <option value="" disabled selected>Choose Category</option>
                         {% for cat in categories %}
-                            <option value="{{cat.category_name}}">{{cat.category_name}}</option>
-                        {% endfor %}
+                                {% if cat.category_name == quote.category_name%}
+                                <option value="{{cat.category_name}}" selected >{{cat.category_name}}</option>
+                                {% else %}
+                                <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                                {% endif %}
+                            {% endfor %}
                     </select>
                     <label>Quote Category</label>
                 </div>
@@ -18,7 +22,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">format_quote</i>
-                    <textarea id="quotation_text" name="quotation_text" class="materialize-textarea"></textarea>
+                    <textarea class="materialize-textarea" rows="10" id="quotation_text" name="quotation_text">{{quote.quotation_text}}"</textarea>
                     <label for="icon_prefix">Quote Text</label>
                 </div>
             </div>
@@ -26,7 +30,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input name="person" id="person" type="text">
+                <input name="person" id="person" type="text" value="{{quote.person}}">
                 <label for="icon_telephone">Person</label>
             </div>
         </div>
@@ -42,7 +46,11 @@
             <div class="switch col s12">
                 <i class="material-icons prefix">favorite</i>
                 <label>
-                    <input id="is_favorite" name="is_favorite" type="checkbox">
+                    {% if quote.is_favorite %}
+                          <input id="is_favorite" name="is_favorite" type="checkbox" checked>
+                    {% else %}
+                         <input id="is_favorite" name="is_favorite" type="checkbox">
+                    {% endif%}
                     <span class="lever"></span>
                 </label>
                 Favorite
@@ -55,4 +63,11 @@
         </div>
     </form>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        date_said = Date.parse('{{quote.date_said}}');
+        $('#date_said').pickadate('picker').set('select', date_said, { format: 'dd/mm/yyyy' }).trigger('change');
+    });
+</script>
 {% endblock %}
