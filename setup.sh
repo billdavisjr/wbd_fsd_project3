@@ -1,11 +1,16 @@
-# commands to set up the workspace 
+# Commands to set up the workspace 
+
+# INSTALL PYTHON PACAKAGES & CREATE REQUIREMENTS FILE
+
 pip3 install flask
 pip3 install flask-pymongo
 pip3 install dnspython
-
 # add other installers here
+pip3 freeze > requirements.txt
 
+# HEROKU SETUP
 
+<<<<<<< HEAD
 pip3 freeze > requirements.txt
 
 
@@ -49,3 +54,7 @@ DOMAIN NAMES
 +The domain quotations.space has been enqueued for addition
 +Run heroku domains:wait 'quotations.space' to wait for completion
 +Adding quotations.space to ⬢ quotations-space... done
+=======
+heroku git:remote quotations-space
+heroku domains:add 'quotations-space'
+>>>>>>> 8fb45d6c7e7a4d81dd3991d49c8774fc6b92b6ee
