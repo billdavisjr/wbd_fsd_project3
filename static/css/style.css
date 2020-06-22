@@ -1,6 +1,7 @@
 .qsheading {
     font-family: cursive;
-    text-align: center;
+    font-size: 52px;
+    /* text-align: center; */
     text-shadow: 2px 2px 1px lightgray;
     padding: 10px;
     color: white;
@@ -27,7 +28,7 @@ body {
 .quotation {
     padding: 15px 15px;
     background-color: white;
-    font-size: 1.25em;
+    font-size: 1.5em;
 
 }
 
