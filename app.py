@@ -34,13 +34,26 @@ def insert_quote():
     return redirect(url_for('get_quotes'))
 
 
-
 @app.route('/edit_quote/<quote_id>')
 def edit_quote(quote_id):
     the_quote = mongo.db.quotations.find_one({"_id": ObjectId(quote_id)})
     all_categories = mongo.db.categories.find()
     return render_template('editquote.html', quote=the_quote,
                            categories=all_categories)
+
+
+@app.route('/update_quote/<quote_id>', methods=["POST"])
+def update_quote(quote_id):
+    quote = mongo.db.quotations
+    quote.replace_one({'_id': ObjectId(quote_id)},
+                  {
+                    'category_name': request.form.get('category_name'),
+                    'quotation_text': request.form.get('quotation_text'),
+                    'person': request.form.get('person'),
+                    'date_said': request.form.get('date_said'),
+                    'is_favorite': request.form.get('is_favorite')
+                  })
+    return redirect(url_for('get_quotes'))
 
 
 if __name__ == '__main__':

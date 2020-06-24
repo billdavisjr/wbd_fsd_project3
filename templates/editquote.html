@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <h5 class="center">Edit Quote</h5>
 <div class="row">
-    <form action="{{ url_for('edit_quote', quote_id=quote._id) }}" method="POST"  class="col s12">        
+    <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST"  class="col s12">        
         <div class="row">
             <div class="row">
                 <div class="input-field col s12">
@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">format_quote</i>
-                    <textarea class="materialize-textarea" rows="10" id="quotation_text" name="quotation_text">{{quote.quotation_text}}"</textarea>
+                    <textarea class="materialize-textarea" rows="10" id="quotation_text" name="quotation_text">{{quote.quotation_text}}</textarea>
                     <label for="icon_prefix">Quote Text</label>
                 </div>
             </div>
@@ -37,8 +37,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">today</i>
-                <!-- input id="date_said" name="date_said" type="text" class="datepicker" -->
-                <input id="matfix" name="date_said" type="text" class="datepicker">
+                <input id="date_said" name="date_said" type="text" class="datepicker" -->
+                <!-- input id="matfix" name="date_said" type="text" class="datepicker" -->
                 <label for="icon_prefix">Date Said</label>
             </div>
         </div>

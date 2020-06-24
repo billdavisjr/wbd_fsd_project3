@@ -10,7 +10,6 @@ pip3 freeze > requirements.txt
 
 # HEROKU SETUP
 
-<<<<<<< HEAD
 pip3 freeze > requirements.txt
 
 
@@ -54,7 +53,7 @@ DOMAIN NAMES
 +The domain quotations.space has been enqueued for addition
 +Run heroku domains:wait 'quotations.space' to wait for completion
 +Adding quotations.space to ⬢ quotations-space... done
-=======
+
+
 heroku git:remote quotations-space
 heroku domains:add 'quotations-space'
->>>>>>> 8fb45d6c7e7a4d81dd3991d49c8774fc6b92b6ee
