@@ -56,6 +56,12 @@ def update_quote(quote_id):
     return redirect(url_for('get_quotes'))
 
 
+@app.route('/delete_quote/<quote_id>')
+def delete_quote(quote_id):
+    mongo.db.quotations.remove({'_id': ObjectId(quote_id)})
+    return redirect(url_for('get_quotes'))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
