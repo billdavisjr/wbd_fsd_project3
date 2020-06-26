@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId 
+from bson.objectid import ObjectId
 
 
 app = Flask(__name__)
@@ -60,6 +60,12 @@ def update_quote(quote_id):
 def delete_quote(quote_id):
     mongo.db.quotations.remove({'_id': ObjectId(quote_id)})
     return redirect(url_for('get_quotes'))
+
+
+@app.route('/get_categories')
+def get_categories():
+    return render_template('categories.html',
+                           categories=mongo.db.categories.find())
 
 
 if __name__ == '__main__':
