@@ -19,7 +19,7 @@
             <ul>
                 <li><a class="btn-floating green darken-1 tooltipped" href="{{ url_for('get_categories') }}"  data-position="left" data-tooltip="View Categories"><i class="material-icons">subject</i></a></li>
                 <li><a class="btn-floating amber darken-1 tooltipped" href="{{ url_for('get_quotes') }}"  data-position="left" data-tooltip="View Quotes"><i class="material-icons">format_quote</i></a></li>
-                <li><a class="btn-floating purple tooltipped" href="" data-position="left" data-tooltip="Add a new category"><i class="material-icons">playlist_add</i></a></li>
+                <li><a class="btn-floating purple tooltipped" href="{{url_for('add_category')}}" data-position="left" data-tooltip="Add a new category"><i class="material-icons">playlist_add</i></a></li>
                 <li><a class="btn-floating blue tooltipped"  href="{{ url_for('add_quote') }}" data-position="left" data-tooltip="Add a new quote"><i class="material-icons">add</i></a></li>
             </ul>
         </div>
