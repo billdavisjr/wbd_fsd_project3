@@ -72,14 +72,17 @@ I'll be continuing to develop this project after I have finished the Code Instit
 
     - $ echo web: python app.py >Procfile
 
+- Set up the environment variables in GitHub 
+    https://www.gitpod.io/docs/environment-variables/
+
 - Set up environment variables in Heroku (or your own environment if not)
-    - IP=0.0.0.0
-    - PORT=5001
-    - MONGO_URI 
+    - IP=0.0.0.0. (may be provided by web/app server)
+    - PORT=5001   (may be provided by web/app server)
+    - MONGO_URI   
 
     MONGO_URI is the connection string to your database; get that from MongoDB.
 
-    These IP addresess are set up in the Heroku application under Settings in the "Config Vars" section.
+    These IP addresess are set up in the Heroku web app for a particular app under Settings in the "Config Vars" section.
 s
 - Create the database in MongoDB (Atlas)
 
@@ -124,8 +127,14 @@ In Gitpod you have superuser security privileges by default. Therefore you do no
 - The GUI framework used for the site is the Materialize framework
     - http://archives.materializecss.com/0.100.2/about.html
 
-- Third party frameworks used are:
+- Third party Python frameworks used are:
     - Flask
     - flask-pymongo
     - dnspython
     And the frameworks they in turn might use; see the requirements.txt file (or generate it)
+
+- Third party JavaScript frameworks
+    - jQuery
+
+- Other 
+    - Google Fonts / Material Icons

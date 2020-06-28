@@ -6,10 +6,8 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'quotations_space'
-app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb+srv://root:r00tUser@cluster0-oxfue.mongodb.net/quotations_space?retryWrites=true&w=majority')
+app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
-# 'mongodb+srv://root:r00tUser@cluster0-oxfue.mongodb.net/quotations_space?retryWrites=true&w=majority'
-# 'mongodb://localhost'
 
 mongo = PyMongo(app)
 
@@ -26,13 +24,16 @@ def search_quotes():
     search_text = request.form.get('searchfield')
     if search_text == '':
         return render_template('quotes.html',
-                               quotations=mongo.db.quotations.find())
+                               quotations=mongo.db.quotations.find(),
+                               searchfield=search_text)
     else:
         the_search = {'$text': {'$search': search_text}}
         print('Search string:')
         print(the_search)
         search_results = mongo.db.quotations.find(the_search)
-        return render_template('quotes.html', quotations=search_results)
+        return render_template('quotes.html',
+                               quotations=search_results,
+                               searchfield=search_text)
 
 
 @app.route('/add_quote')
@@ -60,13 +61,13 @@ def edit_quote(quote_id):
 def update_quote(quote_id):
     quote = mongo.db.quotations
     quote.replace_one({'_id': ObjectId(quote_id)},
-                  {
-                    'category_name': request.form.get('category_name'),
-                    'quotation_text': request.form.get('quotation_text'),
-                    'person': request.form.get('person'),
-                    'date_said': request.form.get('date_said'),
-                    'is_favorite': request.form.get('is_favorite')
-                  })
+                      {
+                        'category_name': request.form.get('category_name'),
+                        'quotation_text': request.form.get('quotation_text'),
+                        'person': request.form.get('person'),
+                        'date_said': request.form.get('date_said'),
+                        'is_favorite': request.form.get('is_favorite')
+                      })
     return redirect(url_for('get_quotes'))
 
 
@@ -86,7 +87,7 @@ def get_categories():
 def edit_category(category_id):
     return render_template('editcategory.html',
                            category=mongo.db.categories.find_one(
-                           {'_id': ObjectId(category_id)}))
+                                {'_id': ObjectId(category_id)}))
 
 
 @app.route('/update_category/<category_id>', methods=['POST'])
@@ -116,6 +117,7 @@ def add_category():
 
 
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
-            debug=True)
+    host = os.environ.get('IP')
+    port = int(os.environ.get('PORT'))
+    debug = True
+    app.run(host, port, debug)
