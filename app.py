@@ -21,6 +21,20 @@ def get_quotes():
                            quotations=mongo.db.quotations.find())
 
 
+@app.route('/search_quotes', methods=['POST'])
+def search_quotes():
+    search_text = request.form.get('searchfield')
+    if search_text == '':
+        return render_template('quotes.html',
+                               quotations=mongo.db.quotations.find())
+    else:
+        the_search = {'$text': {'$search': search_text}}
+        print('Search string:')
+        print(the_search)
+        search_results = mongo.db.quotations.find(the_search)
+        return render_template('quotes.html', quotations=search_results)
+
+
 @app.route('/add_quote')
 def add_quote():
     return render_template('addquote.html',

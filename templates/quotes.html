@@ -3,8 +3,9 @@
     <div class="qssearchbox">
         <div class="row">
             <div class="col s12">
-                &nbsp;</div>
-            <form class="searchform" name="searchform" id="searchform" action=""  method="POST">
+                &nbsp;
+            </div>
+            <form class="searchform" name="searchform" id="searchform" action="{{ url_for('search_quotes') }}" method="POST">
                     <div class="col s9">
                         <input class="qsearchfield" name="searchfield" id="searchfield" type="text" style="background-color: white; color: black; ">
                     </div>
@@ -21,19 +22,19 @@
             <li>
                 <div class="quotation"><strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong></div>
                 <div class="collapsible-header">
-                        <div class="col s7 attribution ">
-                            <i class="material-icons">expand_more</i>
-                            &nbsp;&nbsp;&nbsp; -- {{quote.person}} &nbsp; <em>{{quote.source}}</em>
-                        </div>
-                        <div class="col s5 quotebuttons">
-                            <a class="waves-effect waves-light btn btn_small green " href="{{url_for('edit_quote', quote_id=quote._id)}}">Edit</a>
-                            <a href="{{url_for('delete_quote', quote_id=quote._id)}}" onclick="Materialize.toast('Quote deleted', 900000); "
-                              class="waves-effect waves-light btn btn_small red darken-3">Delete</a>
-                            <a class="waves-effect waves-light btn btn_small brown">Share</a>
-                            <a class="waves-effect waves-light btn btn_small pink">Fave</a>
-                            <a class="waves-effect waves-light btn btn_small purple">Stars</a>
-                            <a class="waves-effect waves-light btn btn_small blue">Meme</a>
-                        </div>
+                    <div class="col s7 attribution ">
+                        <i class="material-icons">expand_more</i>
+                        &nbsp;&nbsp;&nbsp; -- {{quote.person}} &nbsp; <em>{{quote.source}}</em>
+                    </div>
+                    <div class="col s5 quotebuttons">
+                        <a class="waves-effect waves-light btn btn_small green " href="{{url_for('edit_quote', quote_id=quote._id)}}">Edit</a>
+                        <a href="{{url_for('delete_quote', quote_id=quote._id)}}" onclick="Materialize.toast('Quote deleted', 900000); "
+                            class="waves-effect waves-light btn btn_small red darken-3">Delete</a>
+                        <a class="waves-effect waves-light btn btn_small brown">Share</a>
+                        <a class="waves-effect waves-light btn btn_small pink">Fave</a>
+                        <a class="waves-effect waves-light btn btn_small purple">Stars</a>
+                        <a class="waves-effect waves-light btn btn_small blue">Meme</a>
+                    </div>
                 </div>
                 <div class="collapsible-body">
                     <p><strong>Category: </strong>{{quote.category_name}}</p>
