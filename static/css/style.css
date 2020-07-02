@@ -1,18 +1,22 @@
 .qsheading {
-    font-family: cursive;
-    font-size: 52px;
+    font-family: Impact,'Arial Black', sans-serif;
+    font-style: italic;
+    font-size: 3em;
     text-shadow: 2px 2px 1px lightgray;
-    padding: 10px;
+    padding: 15px;
     color: white;
-    background-image: url("StarfieldSimulation.gif"); /* from https://commons.wikimedia.org/wiki/File:StarfieldSimulation.gif */
+    background-image: url("StarfieldSimulation.gif"); 
+    /* from https://commons.wikimedia.org/wiki/File:StarfieldSimulation.gif */
     background-color: black;
     height: 100px; /* You must set a specified height */
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover; 
 }
+
 body {
     background-color: darkgray;
+}
 
 .centered {
         text-align: center;
@@ -39,7 +43,3 @@ body {
     background-color: whitesmoke;
 }
 
-
-.attribution {
-
-}
