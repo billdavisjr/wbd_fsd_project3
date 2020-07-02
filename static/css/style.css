@@ -32,6 +32,11 @@ body {
 }
 
 
+
+.collapsible-header, .collapsible-body {
+    background-color: whitesmoke;
+}
+
 .quotation {
     padding: 15px 15px;
     background-color: white;
@@ -39,7 +44,7 @@ body {
 
 }
 
-.collapsible-header, .collapsible-body {
-    background-color: whitesmoke;
+.attribution {
+    font-size: 1.5em;
+    font-style: italic; 
 }
-

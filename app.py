@@ -116,6 +116,11 @@ def add_category():
     return render_template('addcategory.html')
 
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
 if __name__ == '__main__':
     host = os.environ.get('IP')
     port = int(os.environ.get('PORT'))
