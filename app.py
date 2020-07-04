@@ -16,7 +16,7 @@ mongo = PyMongo(app)
 @app.route('/get_quotes')
 def get_quotes():
     return render_template('quotes.html',
-                           quotations=mongo.db.quotations.find())
+                           quotations=mongo.db.quotations.find().sort("person"))
 
 
 @app.route('/search_quotes', methods=['POST'])
@@ -24,13 +24,13 @@ def search_quotes():
     search_text = request.form.get('searchfield')
     if search_text == '':
         return render_template('quotes.html',
-                               quotations=mongo.db.quotations.find(),
+                               quotations=mongo.db.quotations.find().sort("person"),
                                searchfield=search_text)
     else:
         the_search = {'$text': {'$search': search_text}}
         print('Search string:')
         print(the_search)
-        search_results = mongo.db.quotations.find(the_search)
+        search_results = mongo.db.quotations.find(the_search).sort("person")
         return render_template('quotes.html',
                                quotations=search_results,
                                searchfield=search_text)
@@ -39,7 +39,7 @@ def search_quotes():
 @app.route('/add_quote')
 def add_quote():
     return render_template('addquote.html',
-                           categories=mongo.db.categories.find())
+                           categories=mongo.db.categories.find().sort("category_name"))
 
 
 @app.route('/insert_quote', methods=['POST'])
@@ -52,7 +52,7 @@ def insert_quote():
 @app.route('/edit_quote/<quote_id>')
 def edit_quote(quote_id):
     the_quote = mongo.db.quotations.find_one({"_id": ObjectId(quote_id)})
-    all_categories = mongo.db.categories.find()
+    all_categories = mongo.db.categories.find().sort("category_name")
     return render_template('editquote.html', quote=the_quote,
                            categories=all_categories)
 
@@ -65,7 +65,9 @@ def update_quote(quote_id):
                         'category_name': request.form.get('category_name'),
                         'quotation_text': request.form.get('quotation_text'),
                         'person': request.form.get('person'),
+                        'source': request.form.get('source'),
                         'date_said': request.form.get('date_said'),
+                        'stars_rating': request.form.get('stars_rating'),
                         'is_favorite': request.form.get('is_favorite')
                       })
     return redirect(url_for('get_quotes'))
@@ -80,7 +82,7 @@ def delete_quote(quote_id):
 @app.route('/get_categories')
 def get_categories():
     return render_template('categories.html',
-                           categories=mongo.db.categories.find())
+                            categories=mongo.db.categories.find().sort("category_name"))
 
 
 @app.route('/edit_category/<category_id>')

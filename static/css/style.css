@@ -1,9 +1,9 @@
 .qsheading {
     font-family: Impact,'Arial Black', sans-serif;
     font-style: italic;
-    font-size: 3em;
-    text-shadow: 2px 2px 1px lightgray;
-    padding: 15px;
+    font-size: 3.75em;
+    text-shadow: 4px 4px 2px lightgray;
+    padding: 10px;
     color: white;
     background-image: url("StarfieldSimulation.gif"); 
     /* from https://commons.wikimedia.org/wiki/File:StarfieldSimulation.gif */
@@ -15,14 +15,34 @@
 }
 
 body {
-    background-color: darkgray;
+    background-color: darkolivegreen;
+}
+
+.about_text {
+    font-size: 1.25em; 
+
 }
 
 .centered {
-        text-align: center;
+    text-align: center;
 }
 
+.quotation {
+    padding: 15px 15px;
+    background-color: white;
+    font-size: 1.5em;
 }
+
+.attribution {
+    font-size: 1.5em;
+    font-style: italic; 
+}
+
+.footer_link {
+    color: goldenrod;
+}
+
+
 .btn_small {
     line-height: 22px;
     height: 22px;
@@ -31,20 +51,7 @@ body {
     padding: 0 0.5em;
 }
 
-
-
 .collapsible-header, .collapsible-body {
     background-color: whitesmoke;
 }
-
-.quotation {
-    padding: 15px 15px;
-    background-color: white;
-    font-size: 1.5em;
-
-}
-
-.attribution {
-    font-size: 1.5em;
-    font-style: italic; 
-}
+ 

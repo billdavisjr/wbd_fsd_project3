@@ -14,7 +14,7 @@
                 </div>
                 <div class="col s3">
                     <button class="btn waves-effect waves-light" type="submit" name="action" id="action">Search
-                        <i class="material-icons left">search</i>
+                        <i class="material-icons right">search</i>
                     </button>
                 </div>
                 <div class="col s1">&nbsp;</div>
@@ -25,25 +25,71 @@
         {% for quote in quotations %}
         <li>
             <div class="quotation white">
-                <div><strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong></div>
+                <!-- make this conditional so it uses col s12 for quotes w/o an image -->
+                {% if quote.wikicommons_photo %} 
+                    <div class="row">
+                        <div class="col s8">
+                            <strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong>
+                        </div>
+                        <div class="col s4">
+                            <img width="150" src="{{quote.wikicommons_photo}}" />
+                        </div>
+                    </div>
+                {% else %}
+                    <strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong>
+                    <img width="200" src="{{quote.wikicommons_photo}}" />
+                {% endif %}            
+                <div class="right-align">
+                    {% if quote.is_favorite %} 
+                        <i class="material-icons pink-text small">favorite</i>
+                    {% endif %}
+                    &nbsp;
+                    {% if quote.stars_rating %} 
+                        <i class="amber-text darken-5 material-icons small">star</i><span style="font-size: 1em; "> <sup>{{quote.stars_rating}} / 5</sup></span>
+                    {% endif %}                    
+                </div>
             </div>
             <div class="collapsible-header gray lighten-5">
-                    <i class="material-icons tooltipped" data-position="above" data-tooltip="Details">menu</i>
-                    <span class="attribution">&mdash; {{quote.person}}&nbsp;<em>{{quote.source}}</em></span></span>
+                    <i class="material-icons grey-text lighten-1">menu</i>
+                    <div class="right-align attribution">
+                        <span>&mdash; {{quote.person}}
+                        {% if quote.source %}
+                            , <em>"{{quote.source}}"</em>
+                        {% endif %}
+                        </span>&nbsp;
+                    </div>
             </div>
             <div class="collapsible-body">
-                <p><strong>Category: </strong>{{quote.category_name}}</p>
-                <p><strong>Date: </strong>{{quote.date_said}}</p>
-                <p><strong>Rating: </strong>{{quote.stars_rating}} stars</p>
-                <p><strong>Favorite: </strong>{{quote.is_favorite}}</p>
+                <p><strong>Category: </strong><span class="chip">{{quote.category_name}}</span></p>
+                <p><strong>Date Said: </strong>
+                {% if quote.date_said %} 
+                    {{quote.date_said}}
+                {% else %}
+                    Unknown
+                {% endif %}
+                </p>
+                <p><strong>Rating: </strong>
+                    {% if quote.stars_rating %} 
+                        {{quote.stars_rating}} stars
+                    {% else %}
+                        Unrated
+                    {% endif %}
+                </p>
+                <p><strong>Favorite: </strong>
+                    {% if quote.is_favorite %} 
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                    </p>
                 <div class="right">
-                    <a class="green-text tooltipped" data-position="below" data-tooltip="Edit" href="{{url_for('edit_quote', quote_id=quote._id)}}"><i class="material-icons">edit</i></a>
+                    <a class="green-text" href="{{url_for('edit_quote', quote_id=quote._id)}}"><i class="material-icons">edit</i></a>
                     <a href="{{url_for('delete_quote', quote_id=quote._id)}}" onclick="Materialize.toast('Quote deleted', 900000); "
-                        class="red-text darken-3 tooltipped" data-position="below" data-tooltip="Delete"><i class="material-icons">delete</i></a>
-                    <a href="" class="brown-text tooltipped" data-position="below" data-tooltip="Meme"><i class="material-icons">share</i></a>
-                    <a href="" class="pink-text tooltipped" data-position="above" data-tooltip="Favorite"><i class="material-icons">favorite</i></a>
-                    <a href="" class="purple-text tooltipped" data-position="above" data-tooltip="Star Rating"><i class="material-icons">star</i></a>
-                    <a href="" class="blue-text tooltipped" data-position="above" data-tooltip="Meme"><i class="material-icons">photo_size_select_actual</i></a>
+                        class="red-text darken-3"><i class="material-icons">delete</i></a>
+                    <a href="" class="brown-text"><i class="material-icons">share</i></a>
+                    <a href="" class="pink-text"><i class="material-icons">favorite</i></a>
+                    <a href="" class="orange-text darken-5"><i class="material-icons">star</i></a>
+                    <a href="" class="blue-text"><i class="material-icons">photo_size_select_actual</i></a>
                 </div>
                 <div>&nbsp;</div>
             </div>

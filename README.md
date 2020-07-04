@@ -72,6 +72,10 @@ I'll be continuing to develop this project after I have finished the Code Instit
 
     - $ echo web: python app.py >Procfile
 
+- Heroku setup (if you're using it)
+
+$ heroku ps:scale web=1
+
 - Set up the environment variables in GitHub 
     https://www.gitpod.io/docs/environment-variables/
 

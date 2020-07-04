@@ -5,7 +5,7 @@
         <div class="row">
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">poll</i>
+                    <i class="material-icons prefix">subject</i>
                     <select id="category_name" name="category_name">
                         <option value="" disabled selected>Choose Category</option>
                         {% for cat in categories %}
@@ -16,14 +16,14 @@
                                 {% endif %}
                             {% endfor %}
                     </select>
-                    <label>Quote Category</label>
+                    <label class="black-text" for="category_name">Quote Category</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">format_quote</i>
                     <textarea class="materialize-textarea" rows="10" id="quotation_text" name="quotation_text">{{quote.quotation_text}}</textarea>
-                    <label for="icon_prefix">Quote Text</label>
+                    <label class="black-text" for="quotation_text">Quote Text</label>
                 </div>
             </div>
         </div>
@@ -31,43 +31,59 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
                 <input name="person" id="person" type="text" value="{{quote.person}}">
-                <label for="icon_telephone">Person</label>
+                <label class="black-text" for="person">Person</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
+                <i class="material-icons prefix">import_contacts</i>
+                <input name="source" id="source" type="text" value="{{quote.source}}">
+                <label class="black-text" for="source">Source</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12" id="matfix">
                 <i class="material-icons prefix">today</i>
                 <input id="date_said" name="date_said" type="text" class="datepicker" -->
-                <!-- input id="matfix" name="date_said" type="text" class="datepicker" -->
-                <label for="icon_prefix">Date Said</label>
+                <label class="black-text" for="date_said">Date Said</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix amber-text darken-5">star</i>
+                <input name="stars_rating" id="stars_rating" type="text" value="{{quote.stars_rating}}">
+                <label class="black-text" for="stars_rating">Stars</label>
             </div>
         </div>
         <div class="row">
             <div class="switch col s12">
-                <i class="material-icons prefix">favorite</i>
-                <label>
+                <i class="material-icons prefix red-text darken-1">favorite</i>
+                <label class="black-text" for="is_favorite">
                     {% if quote.is_favorite %}
                           <input id="is_favorite" name="is_favorite" type="checkbox" checked>
                     {% else %}
                          <input id="is_favorite" name="is_favorite" type="checkbox">
-                    {% endif%}
+                    {% endif %}
                     <span class="lever"></span>
-                </label>
-                Favorite
+                </label>Favorite
             </div>
         </div>
         <div class="row">
-            <button class="btn waves-effect waves-light right" type="submit" name="action">Save Quote
+            <button class="btn waves-effect waves-light" type="submit" name="action">Save Quote
                 <i class="material-icons right">save_alt</i>
              </button>
+            <a href="{{ url_for('get_quotes') }}" class="waves-effect waves-light btn grey">
+                <i class="material-icons right">cancel</i>Cancel
+            </a>
         </div>
     </form>
 </div>
+<!-- temporary fix for Materialize date picker-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         date_said = Date.parse('{{quote.date_said}}');
-        $('#date_said').pickadate('picker').set('select', date_said, { format: 'dd/mm/yyyy' }).trigger('change');
+        $('#matfix').pickadate('picker').set('select', date_said, { format: 'dd/mm/yyyy' }).trigger('change');
     });
 </script>
 {% endblock %}
