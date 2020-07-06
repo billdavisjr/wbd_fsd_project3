@@ -15,7 +15,7 @@
 }
 
 body {
-    background-color: darkolivegreen;
+    background-color: steelblue; /* dodgerblue, steelblue, cornflowerblue */
 }
 
 .centered {
@@ -41,6 +41,7 @@ body {
      color: goldenrod;
 }
 
+
 .footer_link {
     color: goldenrod;
 }
@@ -57,4 +58,3 @@ body {
 .collapsible-header, .collapsible-body {
     background-color: whitesmoke;
 }
- 
