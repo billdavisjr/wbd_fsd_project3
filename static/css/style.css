@@ -1,7 +1,7 @@
 .qsheading {
     font-family: Impact,'Arial Black', sans-serif;
     font-style: italic;
-    font-size: 3.0em;
+    font-size: 2.75em;
     text-shadow: 4px 4px 2px lightgray;
     padding: 10px;
     color: white;
@@ -18,11 +18,6 @@ body {
     background-color: darkolivegreen;
 }
 
-.about_text {
-    font-size: 1.25em; 
-
-}
-
 .centered {
     text-align: center;
 }
@@ -36,6 +31,14 @@ body {
 .attribution {
     font-size: 1.5em;
     font-style: italic; 
+}
+
+.about_text {
+    font-size: 1.25em; 
+}
+
+.about_anchor {
+     color: goldenrod;
 }
 
 .footer_link {

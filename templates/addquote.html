@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% block content %}
-<script src="{{url_for('static', filename='js/quote_field_validation.js')}}"></script>
 <h5 class="center">Add Quote</h5>
 <div class="row">
     <form id="quotesform" name="quotesform" action="{{ url_for('insert_quote') }}"  method="POST" class="col s12">
@@ -62,7 +61,7 @@
                 </label>
             </div>
         </div>
-        <div class="row">
+        <div class="row center">
             <button class="btn waves-effect waves-light" type="submit" name="action">Add Quote
                 <i class="material-icons right">add</i>
              </button>

@@ -21,7 +21,11 @@ Git Repositories
 
 ## Reasoning for the project
 
-For several decades now I have used a "quotations" database to learn how to program on a variety of systems, from OpenVMS DCL command line on VAX and Alpha minicomputers, to Visual Basic 6 and VB.Net/Visual Studio IDEs to create desktop apps on Windows, to Java desktop apps (jar) on Windows and Mac (including a stand-alone desktop app on the Mac) and then on to JavaServer Pages using Eclipse.  This allows me to learn how to use the basic CRUD concepts on a particular platform.  Over the years I have collected thousands of quotes to use as well.  
+For several decades now I have used a "quotations" database to learn how to program on a variety of systems, from OpenVMS DCL 
+command line on VAX and Alpha minicomputers, to Visual Basic 6 and VB.NET / Visual Studio IDEs to create desktop apps on Windows, 
+to Java desktop apps (jar) on Windows and Mac (including a stand-alone desktop app on the Mac) and then on to JavaServer Pages using 
+Eclipse.  This allows me to learn how to use the basic CRUD concepts on a particular platform.  Over the years I have collected
+ thousands of quotes to use as well.  
 
 So of course, I wanted to do the same thing when taking this course on modern full-stack web development from Code Institute. 
 
@@ -42,19 +46,27 @@ I'll be continuing to develop this project after I have finished the Code Instit
 
 # DEPLOYMENT
 
+NOTE: This project started from the Code Institute student template for Gitpod which preinstalls most of the tools needed for basic 
+development
+
 *REQUIREMENTS*
+
 - Python 3
 - Git 
-- A GitHub free account
-- A Heroku free account (or some other hosting environment, if you want, 
-- MongoDB
+- A GitHub free (or paid) account
+- A Heroku free account (or paid, some other hosting environment, if you want -- you're on your own there, though)
+- MongoDB free (or paid) account
+
 - Python Frameworks
     - Flask
     - PyMongo (flask-pymongo)
     - dnspython
-- Materialize CSS Framework 
 
-As of this writing, the requirements.txt file lists the following frameworks:
+- Materialize CSS Framework 
+- jQuery JavaScript framework
+
+As of this writing, the requirements.txt file lists the following Python frameworks and versions.
+Some are additional rameworks used by the ones listed above:
 
 - click==7.1.2
 - dnspython==1.16.0
@@ -100,23 +112,26 @@ NOTE: These are not necesssarily the latest versions of these frameworks.
                     wiki& fields to that, and look up information from it
                     using the "person" name, as we do for categories. 
 
-Add a few quotes in manually to thease collectons and give the quotes a category from the categories collection. 
+    - dd a few quotes in manually to thease collectons and give the quotes a category from the categories collection. 
 
-- Set up a GitPod account. If you want to use some other environment, feel free, of course, but these instructions assume GitPod and GitHub and Heroku.
+    - If you want to use the MondoDB test database I used to develop and test this site, contact me and I'll send you the connection string. 
 
-Note:This project started from a clone of the Code Institute student template for Gitpod which preinstalls most of the tools needed for basic development. 
+- Set up a GitPod free account
 
-- Set up a Heroku account.  If you want to use some other web app hosting environment or host it locally you may, but these instructions assume hosting on Heroku. 
+    - If you want to use some other environment, feel free, of course, but these instructions assume GitPod and GitHub and Heroku.
+
+- Set up a Heroku account.  
+
+    - If you want to use some other web app hosting environment or host it locally you may, but these instructions assume hosting on Heroku. 
 
 
-- Clone or copy the Quotations.Space! project into your project. 
+- Clone or copy the Quotations.Space! project into your GitPod project. 
 
-    - https://github.com/billdavisjr/quotations-space 
-
-    << clone this to a FSB_Milestone_Project_3 repo and replace this URL 
+    - << add GitHub URL for final submitted project here> - << clone this to a FSB_Milestone_Project_3 repo and replace this URL 
     BEFORE submitting this project. >>
 
-- install the following frameworks:
+- install the following frameworks from the GitPod command line:
+
     $ pip3 install flask
     $ pip3 install flask-pymongo
     $ pip3 install dnspython
@@ -129,12 +144,14 @@ Note:This project started from a clone of the Code Institute student template fo
 
     - $ echo web: python app.py >Procfile
 
-- Heroku setup (if you're using it)
+- Other Heroku setup (if you're using it)
 
-$ heroku ps:scale web=1
+    - $ heroku login
+    - $ heroku ps:scale web=1
 
-- Set up the environment variables in GitPod
-    https://www.gitpod.io/docs/environment-variables/
+- Set up the needed environment variables in GitPod or your IDE
+    
+    - See https://www.gitpod.io/docs/environment-variables/ for info on how to do that
 
     IP = 0.0.0.0
     PORT = 5001
@@ -147,19 +164,21 @@ $ heroku ps:scale web=1
     - PORT=5001   (may be provided by web/app server)
     - QS_MONGO_URI   
 
-
 These IP addresess are set up in the Heroku web app for a particular app under Settings in the "Config Vars" section.
 
 
 ## Starting up the Project 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+To run a local copy of the site on GitPod, type:
+
+- $ python3 app.py
 
 A blue button should appear to click: *Make Public*,
 
 Another blue button should appear to click: *Open Browser*.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in 
+the bash terminal.
 
 
 ## TEST PLAN
@@ -174,7 +193,7 @@ NOTE: I do not have access to Android or Windows or Linux equipment to test on a
 to install software on our machines.
 
 
-TESTS
+### TESTS
 
 Problems should be logged in in the Issues tab on the GitHub repo.
 
@@ -183,10 +202,32 @@ Problems should be logged in in the Issues tab on the GitHub repo.
     - On smartphones and tablets, test in both portrait and landscape orientation.
 
 - Add new quotes, test all the fields
-    - Add stars wwith values from 0 to 5 as well as fractions such 
-    as 0.5, 1.5 ... 4.5, 5.0
-    - 
+    - Add stars with values from 0 to 5 as well as fractions such as 
+        - 0.5, 1.5 ... 4.5, 5.0
+        - Also try other franctions besides .5
+        - Also try integers other than 0,1,2,3,4,5 
 
+    - Most of the database fields are plain text so little validation is needed, and leaving them blank is ok in most cases, though
+    you are unlikely to do so except perhaps for the Date Said and Source of the quote; you often won't know either. 
+
+
+### CODE VALIDATION
+
+The GitPod IDE has linters/validators for HTML, CSS, JavaScript, Python etc.  Because this code uses Flask and Jinja templates, though, 
+many of the HTML templates are fragments of HTML and so don't entirely validate and have tagged {% %} code lines.  For those you simply 
+have to keep an eye on the "Problems" tab in the GitPod IDE and see if anything shows up beyond a few errors you'll always get on the 
+template HTML files. which are:
+
+- Doctype must be declared first   
+    - (the templates don't start with HTML tags because those are only in the base.html template)
+- The id value [is_favorite] must be unique 
+    - (or similar - this is an example of HTML surrounded by {% if %} block so. that we can display a checkbox as checked or not)
+
+I also keep an eye on the last tag in teh template HTML files as it will often be flagged as a problem if you have unbalanced open/close tags somewhere.
+
+The validator for Python flags long lines, as well, and this is a good way to clarify long, complicated lines into several simpler, cleaner, clearer lines.
+The example miniproject "Task Manager" frankly had a number of those.  Indenting helped make they clearer, but refactoring into separate lines
+with a single clear purpose also made for better code.
 
 
 
@@ -194,27 +235,28 @@ Problems should be logged in in the Issues tab on the GitHub repo.
 
 - This project started from the Code Institute student template for Gitpod which preinstalls most of the tools needed for basic development.
 
-- It also was adapted from the Task Manager mini-project created in the course, modified to change the GUI and add additional functions such as searching. 
+- It also was adapted from the Task Manager mini-project created in the course, modified heavily to change the GUI and add additional functions such as searching. 
  
-- The animated starfield behind the page header is from WikiMedia Commons
-    - https://commons.wikimedia.org/wiki/File:StarfieldSimulation.gif
-    - https://upload.wikimedia.org/wikipedia/commons/e/e4/StarfieldSimulation.gif
-
-    - Wikimedia Commons is also used to get images of the people who are being quoted.
-
-- The GUI framework used for the site is the Materialize framework
+- The CSS framework used for the site is MaterializeCSS
+    - https://materializecss.com/
     - http://archives.materializecss.com/0.100.2/about.html
 
 - Third party Python frameworks used are:
-    - Flask
-    - flask-pymongo
+    - Flask                 https://palletsprojects.com/p/flask/
+    - flask-pymongo         https://pypi.org/project/pymongo/ 
     - dnspython
     And the frameworks they in turn might use; see the requirements.txt file (or generate it)
 
 - Third party JavaScript frameworks
-    - jQuery
+    - jQuery      https://jquery.com/
 
-- Other 
-    - Google Fonts
-    - Material Icons
+- Development Tools
+    - GitPod integrated development environment     https://www.gitpod.io/
+    - GitHub code repository                        https://www.github.com/
+    - Python language                               https://www.python.org/
+    - Mongo Database                                https://www.mongodb.com/
+     
+ - The animated starfield behind the page header is from WikiMedia Commons
+    - https://commons.wikimedia.org/wiki/File:StarfieldSimulation.gif
+    - https://upload.wikimedia.org/wikipedia/commons/e/e4/StarfieldSimulation.gif
 
