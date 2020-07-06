@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'quotations_space'
-app.config["MONGO_URI"] = os.getenv('MONGO_URI')
+app.config["MONGO_URI"] = os.getenv('QS_MONGO_URI')
 
 
 mongo = PyMongo(app)
@@ -15,16 +15,18 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_quotes')
 def get_quotes():
+    search_results = mongo.db.quotations.find().sort("person")
     return render_template('quotes.html',
-                           quotations=mongo.db.quotations.find().sort("person"))
+                           quotations=search_results)
 
 
 @app.route('/search_quotes', methods=['POST'])
 def search_quotes():
     search_text = request.form.get('searchfield')
+    quote_list = mongo.db.quotations.find().sort("person")
     if search_text == '':
         return render_template('quotes.html',
-                               quotations=mongo.db.quotations.find().sort("person"),
+                               quotations=quote_list,
                                searchfield=search_text)
     else:
         the_search = {'$text': {'$search': search_text}}
@@ -38,8 +40,8 @@ def search_quotes():
 
 @app.route('/add_quote')
 def add_quote():
-    return render_template('addquote.html',
-                           categories=mongo.db.categories.find().sort("category_name"))
+    sorted_categories = mongo.db.categories.find().sort("category_name")
+    return render_template('addquote.html', categories=sorted_categories)
 
 
 @app.route('/insert_quote', methods=['POST'])
@@ -53,7 +55,8 @@ def insert_quote():
 def edit_quote(quote_id):
     the_quote = mongo.db.quotations.find_one({"_id": ObjectId(quote_id)})
     all_categories = mongo.db.categories.find().sort("category_name")
-    return render_template('editquote.html', quote=the_quote,
+    return render_template('editquote.html',
+                           quote=the_quote,
                            categories=all_categories)
 
 
@@ -75,21 +78,23 @@ def update_quote(quote_id):
 
 @app.route('/delete_quote/<quote_id>')
 def delete_quote(quote_id):
-    mongo.db.quotations.remove({'_id': ObjectId(quote_id)})
+    # mongo.db.quotations.remove({'_id': ObjectId(quote_id)})
+    mongo.db.quotations.delete_one({'_id': ObjectId(quote_id)})
     return redirect(url_for('get_quotes'))
 
 
 @app.route('/get_categories')
 def get_categories():
-    return render_template('categories.html',
-                            categories=mongo.db.categories.find().sort("category_name"))
+    category_list = mongo.db.categories.find().sort("category_name")
+    return render_template('categories.html', categories=category_list)
 
 
 @app.route('/edit_category/<category_id>')
 def edit_category(category_id):
+    the_category = mongo.db.categories.find_one(
+                                {'_id': ObjectId(category_id)})
     return render_template('editcategory.html',
-                           category=mongo.db.categories.find_one(
-                                {'_id': ObjectId(category_id)}))
+                           category=the_category)
 
 
 @app.route('/update_category/<category_id>', methods=['POST'])
@@ -102,7 +107,8 @@ def update_category(category_id):
 
 @app.route('/delete_category/<category_id>')
 def delete_category(category_id):
-    mongo.db.categories.remove({'_id': ObjectId(category_id)})
+    # mongo.db.categories.remove({'_id': ObjectId(category_id)})
+    mongo.db.categories.delete_one({'_id': ObjectId(category_id)})
     return redirect(url_for('get_categories'))
 
 

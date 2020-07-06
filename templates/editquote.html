@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <h5 class="center">Edit Quote</h5>
 <div class="row">
-    <form action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST"  class="col s12">        
+    <form id="quotesform" name="quotesform" action="{{ url_for('update_quote', quote_id=quote._id) }}" method="POST"  class="col s12">        
         <div class="row">
             <div class="row">
                 <div class="input-field col s12">
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix amber-text darken-5">star</i>
-                <input name="stars_rating" id="stars_rating" type="text" value="{{quote.stars_rating}}">
+                <input name="stars_rating" id="stars_rating" type="number" value="{{quote.stars_rating}}" step=".5" min="0.0" max="5.0" onblur="validate_stars_field()">
                 <label class="black-text" for="stars_rating">Stars</label>
             </div>
         </div>
@@ -60,9 +60,9 @@
                 <i class="material-icons prefix red-text darken-1">favorite</i>
                 <label class="black-text" for="is_favorite">
                     {% if quote.is_favorite %}
-                          <input id="is_favorite" name="is_favorite" type="checkbox" checked>
+                          <input id="is_favorite" name="is_favorite" type="checkbox" checked />
                     {% else %}
-                         <input id="is_favorite" name="is_favorite" type="checkbox">
+                         <input id="is_favorite" name="is_favorite" type="checkbox" />
                     {% endif %}
                     <span class="lever"></span>
                 </label>Favorite

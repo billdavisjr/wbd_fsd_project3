@@ -25,28 +25,11 @@
         {% for quote in quotations %}
         <li>
             <div class="quotation white">
-                <!-- make this conditional so it uses col s12 for quotes w/o an image -->
-                {% if quote.wikicommons_photo %} 
-                    <div class="row">
-                        <div class="col s8">
-                            <strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong>
-                        </div>
-                        <div class="col s4">
-                            <img width="100" src="{{quote.wikicommons_photo}}" />
-                        </div>
-                    </div>
-                {% else %}
                     <strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong>
-                    <img width="100" src="{{quote.wikicommons_photo}}" />
-                {% endif %}            
                 <div class="right-align">
                     {% if quote.is_favorite %} 
                         <i class="material-icons pink-text small">favorite</i>
                     {% endif %}
-                    &nbsp;
-                    {% if quote.stars_rating %} 
-                        <i class="amber-text darken-5 material-icons small">star</i><span style="font-size: 1em; "> <sup>{{quote.stars_rating}} / 5</sup></span>
-                    {% endif %}                    
                 </div>
             </div>
             <div class="collapsible-header gray lighten-5">

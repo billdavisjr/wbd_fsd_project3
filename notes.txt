@@ -1,4 +1,4 @@
-## Updates Since The Instructional Video
+## GitPod template Updates Since The Instructional Video
 
 We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
 
@@ -12,9 +12,6 @@ We continually tweak and adjust this template to help give you the best experien
 
 -------------------------------------
 
-
-# 'mongodb+srv://root:r00tUser@cluster0-oxfue.mongodb.net/quotations_space?retryWrites=true&w=majority'
-# 'mongodb://localhost'
 
 
 ----------------------------------------------------------------

@@ -10,7 +10,7 @@
                 </div>
                 <div class="col s4 right-align">
                     <a class="green-text" href="{{url_for('edit_category', category_id=category._id)}}"><i class="material-icons">edit</i></a>
-                    <a href="{{url_for('edit_category', category_id=category._id)}}"  onclick="Materialize.toast('Category deleted', 900000); "
+                    <a href="{{url_for('delete_category', category_id=category._id)}}"  onclick="Materialize.toast('Category deleted', 900000); "
                         class="red-text darken-3"><i class="material-icons">delete</i></a>
       
                 </div>
