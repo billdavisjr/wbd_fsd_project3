@@ -10,10 +10,10 @@
             <form class="searchform" name="searchform" id="searchform" action="{{ url_for('search_quotes') }}" method="POST">
                 <div class="col s1">&nbsp;</div>
                 <div class="col s7">
-                    <input class="qsearchfield" tabindex=1 name="searchfield" id="searchfield" type="text" style="background-color: white; color: black; " value="{{searchfield}}">
+                    <input class="qsearchfield" tabindex="1" name="searchfield" id="searchfield" type="text" value="{{searchfield}}">
                 </div>
                 <div class="col s3 left">
-                    <button class="btn waves-effect waves-light" tabindex=2 type="submit" name="action" id="action">Search
+                    <button class="btn waves-effect waves-light" tabindex="2" type="submit" name="action" id="action">Search
                         <i class="material-icons right">search</i>
                     </button>
                 </div>

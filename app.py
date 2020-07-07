@@ -30,8 +30,6 @@ def search_quotes():
                                searchfield=search_text)
     else:
         the_search = {'$text': {'$search': search_text}}
-        print('Search string:')
-        print(the_search)
         search_results = mongo.db.quotations.find(the_search).sort("person")
         return render_template('quotes.html',
                                quotations=search_results,
