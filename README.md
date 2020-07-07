@@ -11,15 +11,20 @@ Student / Developer:
 
 ## WEB SITE ADDRESS:
 
-    << CLONE THE EXISTING ONES AND THE EXISTING HEROKU APP BEFORE SUBMITTING>>
-    Name in the style of FSD1 and FSD2
+- https://wbd-fsd-project3.herokuapp.com/
 
 ## GIT REPOSITORIES
 
+- https://github.com/billdavisjr/wbd_fsd_project3.git
 
-<< CLONE THE EXISTING ONES AND THE EXISTING HEROKU APP BEFORE SUBMITTING>>
+- https://git.heroku.com/wbd-fsd-project3.git
 
-<< ALSO USE THIS TO TEST THE DEPLOY INSTRUCTIONS>>
+NOTE:  I am continuing development of this site for my own use outside this project for Code Institute.  I submitted a COPY 
+of the project to Code Institute; that's the URLS above for the running site and GitHub and Heroku repos. I MY "production" 
+site I am making use of the GitHub issue tracking capability, as I was when I developed this project. Unfortunately that issue 
+information isn't part of the Git repo and so it didn't copy over to the GitHub repo I submitted.  The names of branches were 
+taken from the issue numbers automatically assigned, so if  you need to see details about the issues (bugs and enhancements) 
+let me know at the email address above and I will give the the URL for my private "production" repo for Quotation.Space. 
 
 #
 # PROJECT INTRODUCTION & DESIGN
@@ -198,14 +203,32 @@ Set a database and the following collections:
 
     - If you want to use some other environment, feel free, of course, but these instructions assume GitPod and GitHub and Heroku.
 
+- Set up the needed environment variables in GitPod or your IDE
+    
+    - See https://www.gitpod.io/docs/environment-variables/ for info on how to do that
+
+    - IP = 0.0.0.0
+    - PORT = 5001
+    - QS_MONGO_URI =  (the address for your Mongo database created earlier
+
+
+- Use the Chrome web browser with GitPod. Install the GitPod GitHub button Extensions so you can create a new GitPod workspace
+from your clone of my repo. 
+
+    https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki
+
 - Set up a Heroku account.  
 
     - If you want to use some other web app hosting environment or host it locally you may, but these instructions assume hosting on Heroku. 
 
+- Create a Heroku project you'll clone my repo into.
+
 - Clone or copy the Quotations.Space! project into your GitPod project. 
 
-    - << add GitHub URL for final submitted project here> - << clone this to a FSB_Milestone_Project_3 repo and replace this URL 
-    BEFORE submitting this project. >>
+    - https://github.com/billdavisjr/wbd_fsd_project3.git
+
+    - https://git.heroku.com/wbd-fsd-project3.git
+
 
 - install the following frameworks from the GitPod command line:
 
@@ -221,23 +244,23 @@ Set a database and the following collections:
 
     - $ echo web: python app.py >Procfile
 
-- Other Heroku setup (if you're using it)
-
-    - $ heroku login
-    - $ heroku ps:scale web=1
-
-- Set up the needed environment variables in GitPod or your IDE
-    
-    - See https://www.gitpod.io/docs/environment-variables/ for info on how to do that
-
-    - IP = 0.0.0.0
-    - PORT = 5001
-    - QS_MONGO_URI =  (the address for your Mongo database screated earlier
-
 - Set up same environment variables in Heroku (or your own environment if not) if you using Heroku for hosting
     - IP=0.0.0.0. (may be provided by web/app server)
     - PORT=5001   (may be provided by web/app server)
     - QS_MONGO_URI   
+
+- Heroku setup in GitPod
+
+    - $ heroku login
+    - $ heroku ps:scale web=1       (this may not be needed)
+
+- Link the Heroku Git repo to your GitPod workspace so you can push 
+
+    - $ heroku git:remote -a YOUR_HEROKU_PROJECT NAME
+
+- Build the Heroku app (must be logged in to heroku)
+
+    - % git push heroku master        
 
 These IP addresess are set up in the Heroku web app for a particular app under Settings in the "Config Vars" section.
 I think the system provides / set the IP and PORT variables anyway. 
@@ -268,8 +291,6 @@ You can also start (or restart/reploy the app after changing the code) by associ
 git repository with the local git repo as a remote:
 
     - $ heroku git:remote -a <repository>
-
-<< make sure this is all you need to do >>
 
 Then after changing some code do a:
 
