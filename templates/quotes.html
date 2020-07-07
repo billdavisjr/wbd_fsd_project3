@@ -25,10 +25,17 @@
         {% for quote in quotations %}
         <li>
             <div class="quotation white center">
+                <div class="right-align">
+                    &nbsp;
+                </div>
+                <div class="center">
                     <strong>&ldquo;{{quote.quotation_text}}&rdquo;</strong>
+                </div>
                 <div class="right-align">
                     {% if quote.is_favorite %} 
                         <i class="material-icons pink-text small">favorite</i>
+                    {% else %}
+                        &nbsp;
                     {% endif %}
                 </div>
             </div>
@@ -41,7 +48,7 @@
                     <div class="col s10">
                         <span class="attribution right">&mdash; {{quote.person}}
                             {% if quote.source %}
-                                , <br/><em>&ldquo;{{quote.source}}&rdquo;</em>&nbsp;
+                                , <em>&ldquo;{{quote.source}}&rdquo;</em>&nbsp;
                             {% endif %}
                         </span>
                     </div>
